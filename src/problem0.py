@@ -189,7 +189,7 @@ def problem0a(n):
            since (2 + 4 + 6) is 12, which is NOT odd.
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ###########################################################################
@@ -270,7 +270,7 @@ def problem0b(n):
            since there are 46 primes between 2 and 200.
      """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ###########################################################################
@@ -279,11 +279,16 @@ def problem0b(n):
     #    **  use (call) the   is_prime   function that is DEFINED ABOVE.
     ###########################################################################
     # ------------------------------------------------------------------
-    for k in range(n>= 2):
-        if k % k == 0:
-            return k
-        else:
-            k = k + 1
+    Total = 0
+
+
+    for k in range(n - 1):
+        a = k + 2
+        if is_prime(a):
+            Total = Total + 1
+
+    return Total
+
 
 def run_test_problem0c():
     """ Tests the   problem0c  function. """
@@ -292,7 +297,7 @@ def run_test_problem0c():
     print('Testing the  problem0c  function:')
     print('  See the graphics windows that pop up.')
     print('--------------------------------------------------')
-
+    import rosegraphics as rg
     # TWO tests on ONE window.
     title = 'Tests 1 & 2 of problem0c: blue circle + 6 circles;'
     title += ' then green circle + 3 circles'
@@ -319,6 +324,15 @@ def run_test_problem0c():
 
 
 def problem0c(circle, n, window):
+    circle.attach_to(window)
+    for k in range(n):
+        yx = rg.Circle(rg.Point(circle.center.x + 2 * circle.radius * (k + 1), circle.center.y),circle.radius)
+        yx.attach_to(window)
+    window.render(0.5)
+
+
+
+
     """
     See   problem0c_picture.pdf   in this project for pictures
     that may help you better understand the following specification:
@@ -342,7 +356,7 @@ def problem0c(circle, n, window):
       :type window: rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ###########################################################################
